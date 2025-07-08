@@ -20,4 +20,13 @@ function twentytwentyfive_child_parent_theme_enqueue_styles() {
 		array( 'twentytwentyfive-style' ),
 		'0.1.0'
 	);
+
+
+	wp_enqueue_script(
+		'fooz-script',
+		get_stylesheet_directory_uri() . '/assets/js/scripts.js',
+		array(),
+		'1.0.0',
+		true
+	);
 }
