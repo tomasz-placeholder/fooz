@@ -1,0 +1,35 @@
+.faq-accordion {
+    counter-reset: faq-details;
+}
+
+.faq-accordion details {
+    counter-increment: faq-details;
+    position: relative;
+    margin-bottom: 1rlh;
+}
+
+.faq-accordion details summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.faq-accordion details summary::after {
+    content: '\25B6'; /* Right-pointing arrow */
+    transition: transform 0.2s;
+    margin-left: auto;
+    order: 2;
+}
+
+.faq-accordion details[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.faq-accordion details summary::before {
+    content: counter(faq-details) ". ";
+    font-weight: normal;
+    margin-right: 0.5rlh;
+    order: 0;
+}

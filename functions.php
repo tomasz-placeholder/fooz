@@ -81,6 +81,16 @@ add_action('init', function() {
         'rewrite' => ['slug' => 'book-genre', 'with_front' => false, 'hierarchical' => true],
         'show_in_rest' => true,
     ]);
+
+    $blocks_dir = get_stylesheet_directory() . '/blocks/';
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($blocks_dir)
+    );
+    foreach ($iterator as $file) {
+        if ($file->getFilename() === 'block.json') {
+            register_block_type($file->getPath());
+        }
+    }
 });
 
 add_action('wp_ajax_nopriv_get_latest_books', 'fooz_get_latest_books');
